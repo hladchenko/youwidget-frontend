@@ -23,9 +23,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-        "@/*": ["./src/*"],
-        "@/components/*": ["./src/components/*"],
-        "@/pages/*": ["./src/pages/*"],
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/pages/*": ["./src/pages/*"]
     }
   },
   "include": ["src"]
