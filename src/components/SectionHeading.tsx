@@ -8,13 +8,15 @@ interface HeadingProps {
 
 const SectionHeading = ({ pageName, action, count = 0 }: HeadingProps) => {
   return (
-    <div className="border-b border-gray-200 mb-10 pb-4 sm:flex sm:items-center sm:justify-between">
-      <div className="flex items-center gap-x-1">
-        <h3 className="text-base font-semibold text-gray-900">{pageName}</h3>
+    <div className="mb-8 sm:flex sm:items-center sm:justify-between">
+      <div className="flex items-center gap-x-1.5">
+        <h1 className="text-3xl/8 font-bold tracking-tight text-gray-900">
+          {pageName}
+        </h1>
         {count > 0 && (
           <span
             className={
-              "inline-flex items-center justify-center rounded-full font-semibold w-5 h-5 text-xs bg-indigo-600 text-white shadow-sm"
+              "inline-flex items-center justify-center rounded-full font-semibold size-6 text-base bg-indigo-600 text-white shadow-sm mt-[5px]"
             }
           >
             {count}

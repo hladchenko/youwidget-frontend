@@ -48,7 +48,7 @@ const Widget = ({ icon: Icon, content, isEditable = false }: IWidgetProps) => {
           </MenuItems>
         </Menu>
       </div>
-      <div className="flex-1 p-1 h-64 text-xs">{content}</div>
+      <div className="flex-1 p-1 h-64 text-xs bg-white">{content}</div>
     </li>
   );
 };

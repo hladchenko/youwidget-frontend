@@ -118,9 +118,9 @@ const Home = () => {
 
             <img
               alt="App screenshot"
-              src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
-              width={2432}
-              height={1442}
+              src="/screenshot.png"
+              width={2588}
+              height={1178}
               className="mt-16 rounded-md bg-gray-50 shadow-xl ring-1 ring-gray-900/10 sm:mt-24"
             />
           </div>
