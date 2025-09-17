@@ -30,7 +30,7 @@ const LineChartWidget = () => {
     {
       name: "Page C",
       uv: 2000,
-      pv: 9800,
+      pv: 6800,
       amt: 2290,
     },
     {
@@ -61,7 +61,14 @@ const LineChartWidget = () => {
 
   const Chart = (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data}>
+      <LineChart
+        data={data}
+        margin={{
+          top: 10,
+          right: 30,
+          bottom: 5,
+        }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

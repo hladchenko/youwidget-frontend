@@ -62,7 +62,14 @@ const BarChartWidget = () => {
 
   const Chart = (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data}>
+      <BarChart
+        data={data}
+        margin={{
+          top: 10,
+          right: 30,
+          bottom: 5,
+        }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

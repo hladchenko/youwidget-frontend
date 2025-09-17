@@ -10,7 +10,7 @@ interface IWidgetProps {
 const Widget = ({ icon: Icon, content }: IWidgetProps) => {
   return (
     <li className="overflow-hidden rounded-xl outline outline-gray-200">
-      <div className="flex items-center gap-x-3 border-b border-gray-900/5 bg-gray-50 p-6">
+      <div className="flex items-center gap-x-3 border-b border-gray-900/5 bg-gray-50 p-3">
         <Icon
           aria-hidden="true"
           className="flex-none size-6 text-indigo-500 group-data-focus:text-gray-500"
