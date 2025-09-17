@@ -14,7 +14,7 @@ const LineChartWidget = () => {
     </div>
   );
 
-  return <Widget icon={DocumentTextIcon} content={Text} />;
+  return <Widget icon={DocumentTextIcon} content={Text} isEditable={true} />;
 };
 
 export default LineChartWidget;
