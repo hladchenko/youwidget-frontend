@@ -12,8 +12,6 @@ import {
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
 
-interface IBarChartWidgetProps {}
-
 const BarChartWidget = () => {
   const data = [
     {

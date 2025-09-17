@@ -1,8 +1,6 @@
 import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Widget from "@/components/widgets/Widget.tsx";
 
-interface ILineChartWidgetProps {}
-
 const LineChartWidget = () => {
   const Text = (
     <div className="m-2 text-sm">

@@ -11,8 +11,6 @@ import {
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
 
-interface ILineChartWidgetProps {}
-
 const LineChartWidget = () => {
   const data = [
     {

@@ -21,7 +21,7 @@ const navigation = [
   { name: "About", href: "/about", icon: InformationCircleIcon },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
