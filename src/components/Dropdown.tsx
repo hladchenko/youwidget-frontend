@@ -57,7 +57,7 @@ const Dropdown = () => {
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
-              Text
+              Text block
             </a>
           </MenuItem>
         </div>
