@@ -4,12 +4,14 @@ import {
   ChartBarIcon,
   ChevronDownIcon,
   DocumentTextIcon,
+  PlusIcon,
 } from "@heroicons/react/20/solid";
 
 const Dropdown = () => {
   return (
     <Menu as="div" className="relative inline-block">
       <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer">
+        <PlusIcon aria-hidden="true" className="-ml-0.5 size-5" />
         Add widget
         <ChevronDownIcon
           aria-hidden="true"
@@ -19,7 +21,7 @@ const Dropdown = () => {
 
       <MenuItems
         transition
-        className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+        className="absolute right-0 z-10 mt-2 w-37 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
       >
         <div className="py-1">
           <MenuItem>

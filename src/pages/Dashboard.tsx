@@ -45,7 +45,7 @@ const Dashboard = () => {
   return (
     <>
       <Heading pageName={"Dashboard"} action={<Dropdown />} />
-      {true ? <EmptyState /> : <WidgetList widgets={widgets} />}
+      {false ? <EmptyState /> : <WidgetList widgets={widgets} />}
     </>
   );
 };

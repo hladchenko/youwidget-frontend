@@ -70,11 +70,7 @@ const DashboardLayout = () => {
               {/* Sidebar component, swap this element with another sidebar if you like */}
               <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                 <div className="relative flex h-16 shrink-0 items-center">
-                  <img
-                    alt="Your Company"
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
-                  />
+                  <img alt="YouWdiget" src="/logo.png" className="h-8 w-auto" />
                 </div>
                 <nav className="relative flex flex-1 flex-col">
                   <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -118,11 +114,7 @@ const DashboardLayout = () => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
-              />
+              <img alt="YouWidget" src="/logo.png" className="h-8 w-auto" />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -201,7 +193,7 @@ const DashboardLayout = () => {
           </a>
         </div>
 
-        <main className="py-10 lg:pl-72">
+        <main className="pb-10 pt-2 lg:pl-72">
           <div className="px-4 sm:px-6 lg:px-8">
             <Outlet />
           </div>
