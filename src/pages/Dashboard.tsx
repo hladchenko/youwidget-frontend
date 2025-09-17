@@ -1,5 +1,7 @@
 import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
+import Heading from "@/components/Heading.tsx";
+import Dropdown from "@/components/Dropdown.tsx";
 
 const Dashboard = () => {
   const widgets = [
@@ -40,7 +42,12 @@ const Dashboard = () => {
     },
   ];
 
-  return <>{false ? <EmptyState /> : <WidgetList widgets={widgets} />}</>;
+  return (
+    <>
+      <Heading pageName={"Dashboard"} action={<Dropdown />} />
+      {true ? <EmptyState /> : <WidgetList widgets={widgets} />}
+    </>
+  );
 };
 
 export default Dashboard;
