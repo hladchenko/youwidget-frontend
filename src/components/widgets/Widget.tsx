@@ -2,13 +2,27 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 import React from "react";
 
-interface IWidgetProps {
+interface WidgetProps {
+  id: string;
+  title: string;
   icon: React.ElementType;
   content: React.ReactNode;
   isEditable?: boolean;
+  height?: string;
+  onEdit?: (id: string) => void;
+  onDelete?: (id: string) => void;
 }
 
-const Widget = ({ icon: Icon, content, isEditable = false }: IWidgetProps) => {
+const Widget = ({
+  id,
+  title,
+  icon: Icon,
+  content,
+  isEditable = false,
+  height = "h-64",
+  onEdit,
+  onDelete,
+}: WidgetProps) => {
   return (
     <li className="overflow-hidden rounded-xl outline outline-gray-200">
       <div className="flex items-center gap-x-3 border-b border-gray-900/5 bg-gray-50 p-3">
@@ -16,7 +30,7 @@ const Widget = ({ icon: Icon, content, isEditable = false }: IWidgetProps) => {
           aria-hidden="true"
           className="flex-none size-6 text-indigo-500 group-data-focus:text-gray-500"
         />
-        <div className="text-sm/6 font-medium text-gray-900">Test widget</div>
+        <div className="text-sm/6 font-medium text-gray-900">{title}</div>
         <Menu as="div" className="relative ml-auto">
           <MenuButton className="relative block text-gray-400 hover:text-gray-500 cursor-pointer">
             <span className="absolute -inset-2.5" />
@@ -29,26 +43,26 @@ const Widget = ({ icon: Icon, content, isEditable = false }: IWidgetProps) => {
           >
             {isEditable && (
               <MenuItem>
-                <a
-                  href="#"
-                  className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
+                <button
+                  onClick={() => onEdit?.(id)}
+                  className="block w-full text-left px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden cursor-pointer"
                 >
                   Edit
-                </a>
+                </button>
               </MenuItem>
             )}
             <MenuItem>
-              <a
-                href="#"
-                className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
+              <button
+                onClick={() => onDelete?.(id)}
+                className="block w-full text-left px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden cursor-pointer"
               >
                 Delete
-              </a>
+              </button>
             </MenuItem>
           </MenuItems>
         </Menu>
       </div>
-      <div className="flex-1 p-1 h-64 text-xs bg-white">{content}</div>
+      <div className={`flex-1 p-1 ${height} text-xs bg-white`}>{content}</div>
     </li>
   );
 };

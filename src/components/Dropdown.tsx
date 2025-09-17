@@ -7,7 +7,11 @@ import {
   PlusIcon,
 } from "@heroicons/react/20/solid";
 
-const Dropdown = () => {
+interface DropdownProps {
+  onAddWidget: (type: "line-chart" | "bar-chart" | "text") => void;
+}
+
+const Dropdown = ({ onAddWidget }: DropdownProps) => {
   return (
     <Menu as="div" className="relative inline-block">
       <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer">
@@ -25,40 +29,40 @@ const Dropdown = () => {
       >
         <div className="py-1">
           <MenuItem>
-            <a
-              href="#"
-              className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+            <button
+              onClick={() => onAddWidget("line-chart")}
+              className="group flex w-full items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden cursor-pointer"
             >
               <ArrowTrendingUpIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
               Line chart
-            </a>
+            </button>
           </MenuItem>
           <MenuItem>
-            <a
-              href="#"
-              className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+            <button
+              onClick={() => onAddWidget("bar-chart")}
+              className="group flex w-full items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden cursor-pointer"
             >
               <ChartBarIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
               Bar chart
-            </a>
+            </button>
           </MenuItem>
           <MenuItem>
-            <a
-              href="#"
-              className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+            <button
+              onClick={() => onAddWidget("text")}
+              className="group flex w-full items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden cursor-pointer"
             >
               <DocumentTextIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
               Text block
-            </a>
+            </button>
           </MenuItem>
         </div>
       </MenuItems>

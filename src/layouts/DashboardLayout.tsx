@@ -10,17 +10,11 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Outlet } from "react-router-dom";
 
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
-const navigation = [
-  { name: "Widgets", href: "#", current: true },
-  { name: "About", href: "#", current: false },
-];
-const userNavigation = [{ name: "Sign out", href: "/" }];
+import {
+  MOCK_USER,
+  NAVIGATION_ITEMS,
+  USER_NAVIGATION_ITEMS,
+} from "@/constants/mockData";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -43,7 +37,7 @@ const DashboardLayout = () => {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item) => (
+                    {NAVIGATION_ITEMS.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -70,7 +64,7 @@ const DashboardLayout = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         alt=""
-                        src={user.imageUrl}
+                        src={MOCK_USER.imageUrl}
                         className="size-8 rounded-full outline -outline-offset-1 outline-white/10"
                       />
                     </MenuButton>
@@ -79,7 +73,7 @@ const DashboardLayout = () => {
                       transition
                       className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                     >
-                      {userNavigation.map((item) => (
+                      {USER_NAVIGATION_ITEMS.map((item) => (
                         <MenuItem key={item.name}>
                           <a
                             href={item.href}
@@ -113,7 +107,7 @@ const DashboardLayout = () => {
 
           <DisclosurePanel className="md:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-              {navigation.map((item) => (
+              {NAVIGATION_ITEMS.map((item) => (
                 <DisclosureButton
                   key={item.name}
                   as="a"
@@ -135,21 +129,21 @@ const DashboardLayout = () => {
                 <div className="shrink-0">
                   <img
                     alt=""
-                    src={user.imageUrl}
+                    src={MOCK_USER.imageUrl}
                     className="size-10 rounded-full outline -outline-offset-1 outline-white/10"
                   />
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-white">
-                    {user.name}
+                    {MOCK_USER.name}
                   </div>
                   <div className="text-sm font-medium text-indigo-300">
-                    {user.email}
+                    {MOCK_USER.email}
                   </div>
                 </div>
               </div>
               <div className="mt-3 space-y-1 px-2">
-                {userNavigation.map((item) => (
+                {USER_NAVIGATION_ITEMS.map((item) => (
                   <DisclosureButton
                     key={item.name}
                     as="a"

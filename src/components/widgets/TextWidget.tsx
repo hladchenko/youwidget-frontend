@@ -1,18 +1,37 @@
 import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Widget from "@/components/widgets/Widget.tsx";
+import { SAMPLE_TEXT_CONTENT } from "@/constants/mockData";
 
-const LineChartWidget = () => {
-  const Text = (
-    <div className="m-2 text-sm">
-      So I started to walk into the water. I won't lie to you boys, I was
-      terrified. But I pressed on, and as I made my way past the breakers a
-      strange calm came over me. I don't know if it was divine intervention or
-      the kinship of all living things but I tell you Jerry at that moment, I
-      was a marine biologist.
-    </div>
+interface TextWidgetProps {
+  id: string;
+  title: string;
+  content?: string;
+  isEditable?: boolean;
+  onEdit?: (id: string) => void;
+  onDelete?: (id: string) => void;
+}
+
+const TextWidget = ({
+  id,
+  title,
+  content = SAMPLE_TEXT_CONTENT,
+  isEditable = true,
+  onEdit,
+  onDelete,
+}: TextWidgetProps) => {
+  const Text = <div className="m-2 text-sm">{content}</div>;
+
+  return (
+    <Widget
+      id={id}
+      title={title}
+      icon={DocumentTextIcon}
+      content={Text}
+      isEditable={isEditable}
+      onEdit={onEdit}
+      onDelete={onDelete}
+    />
   );
-
-  return <Widget icon={DocumentTextIcon} content={Text} isEditable={true} />;
 };
 
-export default LineChartWidget;
+export default TextWidget;
