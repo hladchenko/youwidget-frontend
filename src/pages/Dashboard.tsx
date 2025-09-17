@@ -1,7 +1,8 @@
 import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
-import Heading from "@/components/Heading.tsx";
+import SectionHeading from "@/components/SectionHeading.tsx";
 import Dropdown from "@/components/Dropdown.tsx";
+import PageHeading from "@/components/PageHeading.tsx";
 
 const Dashboard = () => {
   const widgets = [
@@ -44,7 +45,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <Heading pageName={"Dashboard"} action={<Dropdown />} />
+      <PageHeading pageName={"Dashboard"} />
+      <SectionHeading pageName={"Widgets"} action={<Dropdown />} count={3} />
       {false ? <EmptyState /> : <WidgetList widgets={widgets} />}
     </>
   );

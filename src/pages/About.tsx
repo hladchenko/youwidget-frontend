@@ -1,9 +1,9 @@
-import Heading from "@/components/Heading.tsx";
+import PageHeading from "@/components/PageHeading.tsx";
 
 const About = () => {
   return (
     <>
-      <Heading pageName={"About"} />
+      <PageHeading pageName={"About"} />
       About
     </>
   );
