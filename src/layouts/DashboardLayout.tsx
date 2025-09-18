@@ -8,7 +8,7 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 import {
   MOCK_USER,
@@ -30,27 +30,29 @@ const DashboardLayout = () => {
               <div className="flex items-center">
                 <div className="shrink-0">
                   <img
-                    alt="Your Company"
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=300"
-                    className="size-8"
+                    alt="YouWiget"
+                    src="/logo-white.png"
+                    className="h-8 w-auto"
                   />
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {NAVIGATION_ITEMS.map((item) => (
-                      <a
+                      <NavLink
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         aria-current={item.current ? "page" : undefined}
-                        className={classNames(
-                          item.current
-                            ? "bg-indigo-700 text-white"
-                            : "text-white hover:bg-indigo-500/75",
-                          "rounded-md px-3 py-2 text-sm font-medium",
-                        )}
+                        className={({ isActive }) =>
+                          classNames(
+                            isActive
+                              ? "bg-indigo-700 text-white"
+                              : "text-white hover:bg-indigo-500/75",
+                            "rounded-md px-3 py-2 text-sm font-medium",
+                          )
+                        }
                       >
                         {item.name}
-                      </a>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
