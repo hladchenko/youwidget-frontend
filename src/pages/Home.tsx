@@ -117,8 +117,8 @@ const Home = () => {
             <img
               alt="App screenshot"
               src="/screenshot.png"
-              width={2588}
-              height={1178}
+              width={2548}
+              height={1026}
               className="mt-16 rounded-md bg-gray-50 shadow-xl ring-1 ring-gray-900/10 sm:mt-24"
             />
           </div>
