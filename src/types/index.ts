@@ -7,7 +7,7 @@ export interface ChartDataPoint {
 
 export interface IWidget {
   id?: string;
-  name: string;
+  title: string;
   description?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -17,18 +17,6 @@ export interface IWidget {
 export interface WidgetConfig extends Partial<IWidget> {
   isEditable?: boolean;
 }
-
-export interface ChartWidgetProps extends WidgetConfig {
-  type: "line-chart" | "bar-chart";
-  data: ChartDataPoint[];
-}
-
-export interface TextWidgetProps extends WidgetConfig {
-  type: "text";
-  content: string;
-}
-
-export type WidgetProps = ChartWidgetProps | TextWidgetProps;
 
 export interface NavigationItem {
   name: string;

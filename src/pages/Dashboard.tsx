@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
       };
 
       const newWidget: IWidget = {
-        name: widgetTitles[type],
+        title: widgetTitles[type],
         description: `A ${widgetTitles[type].toLowerCase()} for data visualization`,
         type: type,
       };

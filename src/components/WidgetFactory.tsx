@@ -31,7 +31,7 @@ export const WidgetFactory: React.FC<WidgetFactoryProps> = ({
   return (
     <WidgetComponent
       id={config.id || ""}
-      title={config.name || "Untitled Widget"}
+      title={config.title || "Untitled Widget"}
       isEditable={config.isEditable}
       onEdit={onEdit}
       onDelete={onDelete}
