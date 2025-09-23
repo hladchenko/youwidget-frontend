@@ -1,22 +1,32 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
 import SectionHeading from "@/components/SectionHeading.tsx";
 import Dropdown from "@/components/Dropdown.tsx";
-import { WIDGET_CONFIGS } from "@shared/constants/mockData";
-import type { WidgetConfig } from "@/types";
+import {
+  useCreateWidgetMutation,
+  useDeleteWidgetMutation,
+  useFetchWidgets,
+} from "@shared/hooksQuery/useWidget";
+import type { IWidget } from "@/types";
+import Spinner from "@components/Spinner.tsx";
 
 const Dashboard: React.FC = () => {
-  const [widgets, setWidgets] = useState<WidgetConfig[]>(WIDGET_CONFIGS);
+  const { data: widgets = [], isLoading, error } = useFetchWidgets();
+  const createWidgetMutation = useCreateWidgetMutation();
+  const deleteWidgetMutation = useDeleteWidgetMutation();
 
   const handleEditWidget = useCallback((id: string) => {
     // TODO: Implement edit functionality
     console.warn(`Edit widget ${id} - Not implemented`);
   }, []);
 
-  const handleDeleteWidget = useCallback((id: string) => {
-    setWidgets((prev) => prev.filter((widget) => widget.id !== id));
-  }, []);
+  const handleDeleteWidget = useCallback(
+    (id: string) => {
+      deleteWidgetMutation.mutate(id);
+    },
+    [deleteWidgetMutation],
+  );
 
   const handleAddWidget = useCallback(
     (type: "line-chart" | "bar-chart" | "text") => {
@@ -26,17 +36,36 @@ const Dashboard: React.FC = () => {
         text: "Text Widget",
       };
 
-      const newWidget: WidgetConfig = {
+      const newWidget: IWidget = {
         id: `${type}-${Date.now()}`,
         title: widgetTitles[type],
         type,
-        isEditable: true,
       };
 
-      setWidgets((prev) => [...prev, newWidget]);
+      createWidgetMutation.mutate(newWidget);
     },
-    [],
+    [createWidgetMutation],
   );
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="text-lg text-red-600">
+          <Spinner />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="text-lg text-red-600">
+          Error loading widgets: {error.message}
+        </div>
+      </div>
+    );
+  }
 
   const hasWidgets = widgets.length > 0;
 
