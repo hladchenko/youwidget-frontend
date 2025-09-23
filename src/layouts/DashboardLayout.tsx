@@ -14,7 +14,7 @@ import {
   MOCK_USER,
   NAVIGATION_ITEMS,
   USER_NAVIGATION_ITEMS,
-} from "@/constants/mockData";
+} from "@shared/constants/mockData";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");

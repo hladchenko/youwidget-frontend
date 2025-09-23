@@ -3,7 +3,7 @@ import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
 import SectionHeading from "@/components/SectionHeading.tsx";
 import Dropdown from "@/components/Dropdown.tsx";
-import { WIDGET_CONFIGS } from "@/constants/mockData";
+import { WIDGET_CONFIGS } from "@shared/constants/mockData";
 import type { WidgetConfig } from "@/types";
 
 const Dashboard: React.FC = () => {

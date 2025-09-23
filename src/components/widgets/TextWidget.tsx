@@ -1,6 +1,6 @@
 import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Widget from "@/components/widgets/Widget.tsx";
-import { SAMPLE_TEXT_CONTENT } from "@/constants/mockData";
+import { SAMPLE_TEXT_CONTENT } from "@shared/constants/mockData";
 
 interface TextWidgetProps {
   id: string;
