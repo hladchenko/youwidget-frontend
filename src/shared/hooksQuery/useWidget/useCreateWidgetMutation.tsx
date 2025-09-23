@@ -9,7 +9,7 @@ import youwidgetApi from "@shared/api";
 export const createWidget =
   () =>
   async (body: IWidget): Promise<IWidget> => {
-    const { data } = await youwidgetApi.post<IWidget>(`/widget`, body);
+    const { data } = await youwidgetApi.post<IWidget>(`/widgets`, body);
     return data;
   };
 

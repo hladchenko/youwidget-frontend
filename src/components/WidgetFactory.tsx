@@ -21,16 +21,17 @@ export const WidgetFactory: React.FC<WidgetFactoryProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const WidgetComponent = widgetComponents[config.type];
+  const widgetType = config.type || "text";
+  const WidgetComponent = widgetComponents[widgetType];
 
   if (!WidgetComponent) {
-    throw new Error(`Unknown widget type: ${config.type}`);
+    throw new Error(`Unknown widget type: ${widgetType}`);
   }
 
   return (
     <WidgetComponent
-      id={config.id}
-      title={config.title}
+      id={config.id || ""}
+      title={config.name || "Untitled Widget"}
       isEditable={config.isEditable}
       onEdit={onEdit}
       onDelete={onDelete}

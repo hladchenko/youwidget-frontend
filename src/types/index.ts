@@ -6,9 +6,12 @@ export interface ChartDataPoint {
 }
 
 export interface IWidget {
-  id: string;
-  title: string;
-  type: "line-chart" | "bar-chart" | "text";
+  id?: string;
+  name: string;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  type?: "line-chart" | "bar-chart" | "text";
 }
 
 export interface WidgetConfig extends Partial<IWidget> {

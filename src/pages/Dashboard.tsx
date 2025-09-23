@@ -8,8 +8,8 @@ import {
   useDeleteWidgetMutation,
   useFetchWidgets,
 } from "@shared/hooksQuery/useWidget";
-import type { IWidget } from "@/types";
 import Spinner from "@components/Spinner.tsx";
+import type { IWidget } from "@/types";
 
 const Dashboard: React.FC = () => {
   const { data: widgets = [], isLoading, error } = useFetchWidgets();
@@ -37,9 +37,9 @@ const Dashboard: React.FC = () => {
       };
 
       const newWidget: IWidget = {
-        id: `${type}-${Date.now()}`,
-        title: widgetTitles[type],
-        type,
+        name: widgetTitles[type],
+        description: `A ${widgetTitles[type].toLowerCase()} for data visualization`,
+        type: type,
       };
 
       createWidgetMutation.mutate(newWidget);
