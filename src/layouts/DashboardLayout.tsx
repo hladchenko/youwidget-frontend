@@ -14,7 +14,7 @@ import {
   MOCK_USER,
   NAVIGATION_ITEMS,
   USER_NAVIGATION_ITEMS,
-} from "@shared/constants/mockData";
+} from "@shared/config/mockData.ts";
 import { classNames } from "@shared/utils";
 
 const DashboardLayout = () => {

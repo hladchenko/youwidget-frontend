@@ -1,9 +1,4 @@
-import type {
-  ChartDataPoint,
-  WidgetConfig,
-  User,
-  NavigationItem,
-} from "@/types";
+import type { ChartDataPoint, NavigationItem, User } from "@/types";
 
 export const SAMPLE_CHART_DATA: ChartDataPoint[] = [
   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -26,27 +21,6 @@ export const SAMPLE_LINE_CHART_DATA: ChartDataPoint[] = [
 ];
 
 export const SAMPLE_TEXT_CONTENT = `So I started to walk into the water. I won't lie to you boys, I was terrified. But I pressed on, and as I made my way past the breakers a strange calm came over me. I don't know if it was divine intervention or the kinship of all living things but I tell you Jerry at that moment, I was a marine biologist.`;
-
-export const WIDGET_CONFIGS: WidgetConfig[] = [
-  {
-    id: "line-chart-1",
-    title: "Page Views Trend",
-    type: "line-chart",
-    isEditable: false,
-  },
-  {
-    id: "bar-chart-1",
-    title: "User Analytics",
-    type: "bar-chart",
-    isEditable: false,
-  },
-  {
-    id: "text-widget-1",
-    title: "About Section",
-    type: "text",
-    isEditable: true,
-  },
-];
 
 export const MOCK_USER: User = {
   name: "Tom Cook",

@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
-import { SAMPLE_LINE_CHART_DATA } from "@shared/constants/mockData";
+import { SAMPLE_LINE_CHART_DATA } from "@shared/config/mockData.ts";
 import type { ChartDataPoint } from "@/types";
 
 interface LineChartWidgetProps {
