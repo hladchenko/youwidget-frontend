@@ -3,7 +3,7 @@ const EditWidgetForm = () => {
     <>
       <form className="w-full">
         <div>
-          <div className="mt-4 mx-13 grid grid-cols-1 gap-x-6 gap-y-4">
+          <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-4">
             <div>
               <label
                 htmlFor="title"

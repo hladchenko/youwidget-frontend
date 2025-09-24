@@ -39,10 +39,10 @@ const EditWidgetModal = ({
                       as="div"
                       className="flex items-center gap-x-3 text-base font-semibold text-gray-900"
                     >
-                      <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-indigo-100 sm:mx-0 sm:size-10">
+                      <div className="mx-auto flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 sm:mx-0">
                         <PencilIcon
                           aria-hidden="true"
-                          className="size-6 text-indigo-600"
+                          className="size-4 text-indigo-600"
                         />
                       </div>
                       Edit Widget
