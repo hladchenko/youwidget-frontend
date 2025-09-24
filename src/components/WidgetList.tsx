@@ -1,11 +1,11 @@
 import React from "react";
 import WidgetFactory from "./WidgetFactory";
-import type { WidgetConfig } from "@/types";
+import type { IWidgetConfig } from "@/types";
 
 interface WidgetListProps {
-  widgets: WidgetConfig[];
-  onEditWidget?: (id: string) => void;
-  onDeleteWidget?: (id: string) => void;
+  widgets: IWidgetConfig[];
+  onEditWidget: (config: IWidgetConfig) => void;
+  onDeleteWidget: (config: IWidgetConfig) => void;
 }
 
 const WidgetList: React.FC<WidgetListProps> = ({

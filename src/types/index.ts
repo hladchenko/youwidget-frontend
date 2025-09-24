@@ -1,4 +1,4 @@
-export interface ChartDataPoint {
+export interface IChartDataPoint {
   name: string;
   uv: number;
   pv: number;
@@ -14,18 +14,23 @@ export interface IWidget {
   type?: "line-chart" | "bar-chart" | "text";
 }
 
-export interface WidgetConfig extends Partial<IWidget> {
+export interface IWidgetConfig extends Partial<IWidget> {
   isEditable?: boolean;
 }
 
-export interface NavigationItem {
+export interface INavigationItem {
   name: string;
   href: string;
   current: boolean;
 }
 
-export interface User {
+export interface IUser {
   name: string;
   email: string;
   imageUrl: string;
+}
+
+export interface IFormInputs {
+  title: string;
+  description: string;
 }

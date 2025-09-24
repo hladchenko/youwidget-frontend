@@ -12,12 +12,12 @@ import {
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
 import { SAMPLE_CHART_DATA } from "@shared/config/mockData.ts";
-import type { ChartDataPoint } from "@/types";
+import type { IChartDataPoint } from "@/types";
 
 interface BarChartWidgetProps {
   id: string;
   title: string;
-  data?: ChartDataPoint[];
+  data?: IChartDataPoint[];
   isEditable?: boolean;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;

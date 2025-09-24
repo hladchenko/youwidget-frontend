@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,12 +30,12 @@ const Home = () => {
             </button>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="/dashboard"
+            <NavLink
+              to="/widgets"
               className="text-sm/6 font-semibold text-gray-900"
             >
               Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            </NavLink>
           </div>
         </nav>
         <Dialog
@@ -61,12 +62,12 @@ const Home = () => {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="py-6">
-                  <a
-                    href="/dashboard"
+                  <NavLink
+                    to="/widgets"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                   >
                     Log in
-                  </a>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -99,12 +100,12 @@ const Home = () => {
                 decisions — all with YouWidget.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <a
-                  href="/dashboard"
+                <NavLink
+                  to="/widgets"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get started
-                </a>
+                </NavLink>
                 <a
                   href="https://t.me/rock5s"
                   className="text-sm/6 font-semibold text-gray-900"

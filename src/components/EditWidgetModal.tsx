@@ -6,18 +6,23 @@ import {
 } from "@headlessui/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import EditWidgetForm from "@components/EditWidgetForm.tsx";
+import { type UseFormReturn } from "react-hook-form";
+import type { IFormInputs } from "@/types";
 
 interface IEditWidgetModalProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  handleOnSave: () => void;
+  handleOnSave: (data: IFormInputs) => void;
+  form: UseFormReturn<IFormInputs>;
 }
 
 const EditWidgetModal = ({
   isOpen,
   setIsOpen,
   handleOnSave,
+  form,
 }: IEditWidgetModalProps) => {
+  const { handleSubmit } = form;
   return (
     <>
       <Dialog open={isOpen} onClose={setIsOpen} className="relative z-10">
@@ -47,14 +52,14 @@ const EditWidgetModal = ({
                       </div>
                       Edit Widget
                     </DialogTitle>
-                    <EditWidgetForm />
+                    <EditWidgetForm form={form} />
                   </div>
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button
                   type="button"
-                  onClick={handleOnSave}
+                  onClick={handleSubmit(handleOnSave)}
                   className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 sm:ml-3 sm:w-auto cursor-pointer"
                 >
                   Save

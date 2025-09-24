@@ -2,12 +2,12 @@ import React from "react";
 import BarChartWidget from "./widgets/BarChartWidget";
 import LineChartWidget from "./widgets/LineChartWidget";
 import TextWidget from "./widgets/TextWidget";
-import type { WidgetConfig } from "@/types";
+import type { IWidgetConfig } from "@/types";
 
 interface WidgetFactoryProps {
-  config: WidgetConfig;
-  onEdit?: (id: string) => void;
-  onDelete?: (id: string) => void;
+  config: IWidgetConfig;
+  onEdit: (config: IWidgetConfig) => void;
+  onDelete: (config: IWidgetConfig) => void;
 }
 
 const widgetComponents = {
@@ -28,13 +28,16 @@ export const WidgetFactory: React.FC<WidgetFactoryProps> = ({
     throw new Error(`Unknown widget type: ${widgetType}`);
   }
 
+  const onEditHandler = () => onEdit(config);
+  const onDeleteHandler = () => onDelete(config);
+
   return (
     <WidgetComponent
       id={config.id || ""}
       title={config.title || "Untitled Widget"}
       isEditable={config.isEditable}
-      onEdit={onEdit}
-      onDelete={onDelete}
+      onEdit={onEditHandler}
+      onDelete={onDeleteHandler}
     />
   );
 };

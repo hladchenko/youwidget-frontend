@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
 import SectionHeading from "@/components/SectionHeading.tsx";
@@ -9,32 +9,36 @@ import {
   useFetchWidgets,
 } from "@shared/hooksQuery/useWidget";
 import Spinner from "@components/Spinner.tsx";
-import type { IWidget } from "@/types";
+import type { IFormInputs, IWidget, IWidgetConfig } from "@/types";
 import EditWidgetModal from "@components/EditWidgetModal.tsx";
+import { useForm } from "react-hook-form";
 
-const Dashboard: React.FC = () => {
+const Widgets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const form = useForm<IFormInputs>();
 
   const { data: widgets = [], isLoading, error } = useFetchWidgets();
   const createWidgetMutation = useCreateWidgetMutation();
   const deleteWidgetMutation = useDeleteWidgetMutation();
 
-  const handleEditWidget = (id: string) => {
+  const handleEditWidget = (config: IWidgetConfig) => {
     setIsModalOpen(true);
-    console.warn(`Edit widget ${id} - Not implemented`);
+    console.warn(`Edit widget ${config?.id} - Not implemented`);
   };
 
-  const onSaveHandler = () => {
+  const onSaveHandler = (data: IFormInputs) => {
+    console.log(data);
+
     console.log("Saving widget data");
     setIsModalOpen(false);
   };
 
-  const handleDeleteWidget = useCallback(
-    (id: string) => {
-      deleteWidgetMutation.mutate(id);
-    },
-    [deleteWidgetMutation],
-  );
+  const handleDeleteWidget = (config: IWidgetConfig) => {
+    if (config.id) {
+      deleteWidgetMutation.mutate(config.id);
+    }
+  };
 
   const handleAddWidget = useCallback(
     (type: "line-chart" | "bar-chart" | "text") => {
@@ -97,9 +101,10 @@ const Dashboard: React.FC = () => {
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
         handleOnSave={onSaveHandler}
+        form={form}
       />
     </>
   );
 };
 
-export default Dashboard;
+export default Widgets;
