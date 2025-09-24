@@ -15,10 +15,7 @@ import {
   NAVIGATION_ITEMS,
   USER_NAVIGATION_ITEMS,
 } from "@shared/constants/mockData";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@shared/utils";
 
 const DashboardLayout = () => {
   return (
