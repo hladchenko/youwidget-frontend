@@ -66,7 +66,7 @@ const DashboardLayout = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         alt=""
-                        src={MOCK_USER.imageUrl}
+                        src={"/profile.png"}
                         className="size-8 rounded-full outline -outline-offset-1 outline-white/10"
                       />
                     </MenuButton>
