@@ -18,13 +18,19 @@ const Widgets = () => {
 
   const form = useForm<IFormInputs>();
 
+  const { reset } = form;
+
   const { data: widgets = [], isLoading, error } = useFetchWidgets();
   const createWidgetMutation = useCreateWidgetMutation();
   const deleteWidgetMutation = useDeleteWidgetMutation();
 
   const handleEditWidget = (config: IWidgetConfig) => {
+    reset({
+      title: config?.title || "",
+      description: config?.description || "",
+    });
+
     setIsModalOpen(true);
-    console.warn(`Edit widget ${config?.id} - Not implemented`);
   };
 
   const onSaveHandler = (data: IFormInputs) => {
