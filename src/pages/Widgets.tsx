@@ -18,7 +18,7 @@ const Widgets = () => {
 
   const form = useForm<IFormInputs>();
 
-  const { reset } = form;
+  const { reset, setFocus } = form;
 
   const { data: widgets = [], isLoading, error } = useFetchWidgets();
   const createWidgetMutation = useCreateWidgetMutation();
@@ -31,6 +31,10 @@ const Widgets = () => {
     });
 
     setIsModalOpen(true);
+
+    setTimeout(() => {
+      setFocus("title");
+    }, 0);
   };
 
   const onSaveHandler = (data: IFormInputs) => {
