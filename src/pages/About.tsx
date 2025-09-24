@@ -5,7 +5,7 @@ const About = () => {
     <>
       <SectionHeading pageName="About" />
       <div className="max-w-4xl mx-auto p-6 space-y-8">
-        <section className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <section className="bg-white rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             Widget Dashboard
           </h2>
@@ -38,7 +38,7 @@ const About = () => {
           </p>
         </section>
 
-        <section className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <section className="bg-white rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             Frontend Architecture
           </h2>
@@ -121,7 +121,7 @@ const About = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <section className="bg-white rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             Backend Architecture
           </h2>
