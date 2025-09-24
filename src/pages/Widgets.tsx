@@ -69,13 +69,15 @@ const Widgets = () => {
 
     const data = type !== "text" ? JSON.stringify(generateChartData()) : "";
 
+    const description =
+      type === "text"
+        ? " This is a sample text created for demonstration purposes. To customize" +
+          " it, please use the menu in the upper-right corner."
+        : "";
+
     const newWidget: IWidget = {
       title: widgetTitles[type],
-      description:
-        widgetTitles[type] === "text"
-          ? " This is a sample text created for demonstration purposes. To customize" +
-            " it, please use the menu in the upper-right corner."
-          : "",
+      description,
       type,
       json_data: data,
     };
