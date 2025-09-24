@@ -8,6 +8,7 @@ export interface IChartDataPoint {
 export interface IWidget {
   id?: string;
   title: string;
+  json_data?: string;
   description?: string;
   createdAt?: string;
   updatedAt?: string;

@@ -35,12 +35,14 @@ A modern widget management dashboard built with React, TypeScript, and Vite. Thi
 ### Installation
 
 1. Clone the repository
+
    ```bash
    git clone <repository-url>
    cd youwidget-frontend
    ```
 
 2. Install dependencies
+
    ```bash
    npm install
    ```

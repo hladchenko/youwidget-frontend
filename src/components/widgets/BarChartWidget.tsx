@@ -11,13 +11,12 @@ import {
   YAxis,
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
-import { SAMPLE_CHART_DATA } from "@shared/config/mockData.ts";
-import type { IChartDataPoint, IWidget } from "@/types";
+import type { IWidget } from "@/types";
+import { getChartDataFromJson } from "@shared/utils";
 
 interface BarChartWidgetProps {
   id: string;
   widget: IWidget;
-  data?: IChartDataPoint[];
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
 }
@@ -25,10 +24,10 @@ interface BarChartWidgetProps {
 const BarChartWidget = ({
   id,
   widget,
-  data = SAMPLE_CHART_DATA,
   onEdit,
   onDelete,
 }: BarChartWidgetProps) => {
+  const data = getChartDataFromJson(widget?.json_data);
   const Chart = (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart

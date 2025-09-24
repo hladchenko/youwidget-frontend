@@ -10,13 +10,12 @@ import {
   YAxis,
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
-import { SAMPLE_LINE_CHART_DATA } from "@shared/config/mockData.ts";
-import type { IChartDataPoint, IWidget } from "@/types";
+import type { IWidget } from "@/types";
+import { getChartDataFromJson } from "@shared/utils";
 
 interface LineChartWidgetProps {
   id: string;
   widget: IWidget;
-  data?: IChartDataPoint[];
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
 }
@@ -24,10 +23,10 @@ interface LineChartWidgetProps {
 const LineChartWidget = ({
   id,
   widget,
-  data = SAMPLE_LINE_CHART_DATA,
   onEdit,
   onDelete,
 }: LineChartWidgetProps) => {
+  const data = getChartDataFromJson(widget?.json_data);
   const Chart = (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
 import SectionHeading from "@/components/SectionHeading.tsx";
@@ -12,6 +12,7 @@ import Spinner from "@components/Spinner.tsx";
 import type { IFormInputs, IWidget } from "@/types";
 import EditWidgetModal from "@components/EditWidgetModal.tsx";
 import { useForm } from "react-hook-form";
+import { generateChartData } from "@shared/utils";
 
 const Widgets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,24 +51,24 @@ const Widgets = () => {
     }
   };
 
-  const handleAddWidget = useCallback(
-    (type: "line-chart" | "bar-chart" | "text") => {
-      const widgetTitles = {
-        "line-chart": "Line Chart",
-        "bar-chart": "Bar Chart",
-        text: "Text Widget",
-      };
+  const handleAddWidget = (type: "line-chart" | "bar-chart" | "text") => {
+    const widgetTitles = {
+      "line-chart": "Line Chart",
+      "bar-chart": "Bar Chart",
+      text: "Text Widget",
+    };
 
-      const newWidget: IWidget = {
-        title: widgetTitles[type],
-        description: `A ${widgetTitles[type].toLowerCase()} for data visualization`,
-        type: type,
-      };
+    const data = type !== "text" ? JSON.stringify(generateChartData()) : "";
 
-      createWidgetMutation.mutate(newWidget);
-    },
-    [createWidgetMutation],
-  );
+    const newWidget: IWidget = {
+      title: widgetTitles[type],
+      description: `A ${widgetTitles[type].toLowerCase()} for data visualization`,
+      type,
+      json_data: data,
+    };
+
+    createWidgetMutation.mutate(newWidget);
+  };
 
   if (isLoading) {
     return (
