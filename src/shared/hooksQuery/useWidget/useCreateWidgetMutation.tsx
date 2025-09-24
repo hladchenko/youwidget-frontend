@@ -6,12 +6,10 @@ import {
 import type { IWidget } from "@/types";
 import youwidgetApi from "@shared/api";
 
-export const createWidget =
-  () =>
-  async (body: IWidget): Promise<IWidget> => {
-    const { data } = await youwidgetApi.post<IWidget>(`/widgets`, body);
-    return data;
-  };
+export const createWidget = async (body: IWidget): Promise<IWidget> => {
+  const { data } = await youwidgetApi.post<IWidget>(`/widgets`, body);
+  return data;
+};
 
 export const useCreateWidgetMutation = (): UseMutationResult<
   IWidget,
@@ -23,7 +21,7 @@ export const useCreateWidgetMutation = (): UseMutationResult<
 
   return useMutation({
     mutationKey: ["createWidget"],
-    mutationFn: createWidget(),
+    mutationFn: createWidget,
     onMutate: async (newWidget: IWidget) => {
       await queryClient.cancelQueries({ queryKey: ["widgets"] });
 

@@ -13,7 +13,7 @@ interface TextWidgetProps {
 const TextWidget = ({ id, widget, onEdit, onDelete }: TextWidgetProps) => {
   const Text = (
     <div className="m-2 text-sm">
-      {widget?.description ? widget?.description : <span className=""></span>}
+      {widget?.description || "No description available"}
     </div>
   );
 

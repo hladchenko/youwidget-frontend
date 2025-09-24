@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Home from "@/pages/Home.tsx";
+import Home from "@pages/Home.tsx";
 import Widgets from "@pages/Widgets.tsx";
 import DashboardLayout from "@/layouts/DashboardLayout.tsx";
-import About from "@/pages/About.tsx";
-import NotFound from "@/pages/NotFound.tsx";
+import About from "@pages/About.tsx";
+import NotFound from "@pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
