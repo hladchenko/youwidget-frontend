@@ -8,7 +8,7 @@ interface HeadingProps {
 
 const SectionHeading = ({ pageName, action, count = 0 }: HeadingProps) => {
   return (
-    <div className="mb-8 sm:flex sm:items-center sm:justify-between">
+    <div className="mb-8 flex items-center justify-between">
       <div className="flex items-center gap-x-1.5">
         <h1 className="text-3xl/8 font-bold tracking-tight text-gray-900">
           {pageName}

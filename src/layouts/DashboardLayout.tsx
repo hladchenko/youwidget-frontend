@@ -11,7 +11,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink, Outlet } from "react-router-dom";
 
 import {
-  MOCK_USER,
   NAVIGATION_ITEMS,
   USER_NAVIGATION_ITEMS,
 } from "@shared/config/mockData.ts";
@@ -109,44 +108,31 @@ const DashboardLayout = () => {
               {NAVIGATION_ITEMS.map((item) => (
                 <DisclosureButton
                   key={item.name}
-                  as="a"
-                  href={item.href}
-                  aria-current={item.current ? "page" : undefined}
-                  className={classNames(
-                    item.current
-                      ? "bg-indigo-700 text-white"
-                      : "text-white hover:bg-indigo-500/75",
-                    "block rounded-md px-3 py-2 text-base font-medium",
+                  as={() => (
+                    <NavLink
+                      to={item.href}
+                      className={({ isActive }) =>
+                        classNames(
+                          isActive
+                            ? "bg-indigo-700 text-white"
+                            : "text-white hover:bg-indigo-500/75",
+                          "block rounded-md px-3 py-2 text-base font-medium",
+                        )
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
                   )}
-                >
-                  {item.name}
-                </DisclosureButton>
+                />
               ))}
             </div>
-            <div className="border-t border-indigo-700 pt-4 pb-3">
-              <div className="flex items-center px-5">
-                <div className="shrink-0">
-                  <img
-                    alt=""
-                    src={MOCK_USER.imageUrl}
-                    className="size-10 rounded-full outline -outline-offset-1 outline-white/10"
-                  />
-                </div>
-                <div className="ml-3">
-                  <div className="text-base font-medium text-white">
-                    {MOCK_USER.name}
-                  </div>
-                  <div className="text-sm font-medium text-indigo-300">
-                    {MOCK_USER.email}
-                  </div>
-                </div>
-              </div>
+            <div className="border-t border-indigo-700 pb-3">
               <div className="mt-3 space-y-1 px-2">
                 {USER_NAVIGATION_ITEMS.map((item) => (
                   <DisclosureButton
                     key={item.name}
-                    as="a"
-                    href={item.href}
+                    as={NavLink}
+                    to={item.href}
                     className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-indigo-500/75"
                   >
                     {item.name}
