@@ -7,6 +7,7 @@ import {
   useCreateWidgetMutation,
   useDeleteWidgetMutation,
   useFetchWidgets,
+  useUpdateWidgetMutation,
 } from "@shared/hooksQuery/useWidget";
 import Spinner from "@components/Spinner.tsx";
 import type { IFormInputs, IWidget } from "@/types";
@@ -16,6 +17,7 @@ import { generateChartData } from "@shared/utils";
 
 const Widgets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingWidget, setEditingWidget] = useState<IWidget | null>(null);
 
   const form = useForm<IFormInputs>();
 
@@ -23,25 +25,32 @@ const Widgets = () => {
 
   const { data: widgets = [], isLoading, error } = useFetchWidgets();
   const createWidgetMutation = useCreateWidgetMutation();
+  const updateWidgetMutation = useUpdateWidgetMutation();
   const deleteWidgetMutation = useDeleteWidgetMutation();
 
   const handleEditWidget = (widget: IWidget) => {
+    setEditingWidget(widget);
     reset({
       title: widget?.title || "",
       description: widget?.description || "",
     });
 
-    setIsModalOpen(true);
-
     setTimeout(() => {
+      setIsModalOpen(true);
       setFocus("title");
     }, 0);
   };
 
   const onSaveHandler = (data: IFormInputs) => {
-    console.log(data);
+    if (editingWidget?.id) {
+      const updatedWidget: IWidget = {
+        ...editingWidget,
+        title: data.title,
+        description: data.description,
+      };
 
-    console.log("Saving widget data");
+      updateWidgetMutation.mutate(updatedWidget);
+    }
     setIsModalOpen(false);
   };
 
@@ -62,7 +71,11 @@ const Widgets = () => {
 
     const newWidget: IWidget = {
       title: widgetTitles[type],
-      description: `A ${widgetTitles[type].toLowerCase()} for data visualization`,
+      description:
+        widgetTitles[type] === "text"
+          ? " This is a sample text created for demonstration purposes. To customize" +
+            " it, please use the menu in the upper-right corner."
+          : "",
       type,
       json_data: data,
     };

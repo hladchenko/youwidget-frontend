@@ -38,13 +38,13 @@ const EditWidgetForm = ({ form }: IEditWidgetFormProps) => {
                 {...register("title", { required: true })}
               />
             </div>
-            <p className="mt-1">
+            <div className="mt-1">
               {errors.title && (
-                <p id="email-error" className="text-sm text-red-600">
+                <span id="email-error" className="text-sm text-red-600">
                   This field is required.
-                </p>
+                </span>
               )}
-            </p>
+            </div>
           </div>
 
           <div className="col-span-full">
