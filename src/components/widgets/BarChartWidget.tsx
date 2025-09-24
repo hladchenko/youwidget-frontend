@@ -12,22 +12,20 @@ import {
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
 import { SAMPLE_CHART_DATA } from "@shared/config/mockData.ts";
-import type { IChartDataPoint } from "@/types";
+import type { IChartDataPoint, IWidget } from "@/types";
 
 interface BarChartWidgetProps {
   id: string;
-  title: string;
+  widget: IWidget;
   data?: IChartDataPoint[];
-  isEditable?: boolean;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
 }
 
 const BarChartWidget = ({
   id,
-  title,
+  widget,
   data = SAMPLE_CHART_DATA,
-  isEditable = false,
   onEdit,
   onDelete,
 }: BarChartWidgetProps) => {
@@ -63,10 +61,10 @@ const BarChartWidget = ({
   return (
     <Widget
       id={id}
-      title={title}
+      title={widget?.title}
       icon={ChartBarIcon}
       content={Chart}
-      isEditable={isEditable}
+      isEditable={false}
       onEdit={onEdit}
       onDelete={onDelete}
     />

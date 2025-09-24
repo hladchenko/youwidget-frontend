@@ -11,22 +11,20 @@ import {
 } from "recharts";
 import Widget from "@/components/widgets/Widget.tsx";
 import { SAMPLE_LINE_CHART_DATA } from "@shared/config/mockData.ts";
-import type { IChartDataPoint } from "@/types";
+import type { IChartDataPoint, IWidget } from "@/types";
 
 interface LineChartWidgetProps {
   id: string;
-  title: string;
+  widget: IWidget;
   data?: IChartDataPoint[];
-  isEditable?: boolean;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
 }
 
 const LineChartWidget = ({
   id,
-  title,
+  widget,
   data = SAMPLE_LINE_CHART_DATA,
-  isEditable = false,
   onEdit,
   onDelete,
 }: LineChartWidgetProps) => {
@@ -59,10 +57,10 @@ const LineChartWidget = ({
   return (
     <Widget
       id={id}
-      title={title}
+      title={widget?.title}
       icon={ArrowTrendingUpIcon}
       content={Chart}
-      isEditable={isEditable}
+      isEditable={false}
       onEdit={onEdit}
       onDelete={onDelete}
     />

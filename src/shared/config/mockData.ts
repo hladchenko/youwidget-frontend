@@ -20,8 +20,6 @@ export const SAMPLE_LINE_CHART_DATA: IChartDataPoint[] = [
   { name: "Page G", uv: 3490, pv: 4300, amt: 2100 },
 ];
 
-export const SAMPLE_TEXT_CONTENT = `So I started to walk into the water. I won't lie to you boys, I was terrified. But I pressed on, and as I made my way past the breakers a strange calm came over me. I don't know if it was divine intervention or the kinship of all living things but I tell you Jerry at that moment, I was a marine biologist.`;
-
 export const NAVIGATION_ITEMS: INavigationItem[] = [
   { name: "Widgets", href: "/widgets", current: true },
   { name: "About", href: "/about", current: false },

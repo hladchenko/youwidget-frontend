@@ -14,10 +14,6 @@ export interface IWidget {
   type?: "line-chart" | "bar-chart" | "text";
 }
 
-export interface IWidgetConfig extends Partial<IWidget> {
-  isEditable?: boolean;
-}
-
 export interface INavigationItem {
   name: string;
   href: string;

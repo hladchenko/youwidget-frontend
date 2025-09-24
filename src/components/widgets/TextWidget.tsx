@@ -1,33 +1,25 @@
 import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Widget from "@/components/widgets/Widget.tsx";
-import { SAMPLE_TEXT_CONTENT } from "@shared/config/mockData.ts";
+import type { IWidget } from "@/types";
 
 interface TextWidgetProps {
   id: string;
-  title: string;
+  widget: IWidget;
   content?: string;
-  isEditable?: boolean;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
 }
 
-const TextWidget = ({
-  id,
-  title,
-  content = SAMPLE_TEXT_CONTENT,
-  isEditable = true,
-  onEdit,
-  onDelete,
-}: TextWidgetProps) => {
-  const Text = <div className="m-2 text-sm">{content}</div>;
+const TextWidget = ({ id, widget, onEdit, onDelete }: TextWidgetProps) => {
+  const Text = <div className="m-2 text-sm">{widget?.description}</div>;
 
   return (
     <Widget
       id={id}
-      title={title}
+      title={widget?.title}
       icon={DocumentTextIcon}
       content={Text}
-      isEditable={isEditable}
+      isEditable={true}
       onEdit={onEdit}
       onDelete={onDelete}
     />

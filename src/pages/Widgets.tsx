@@ -9,7 +9,7 @@ import {
   useFetchWidgets,
 } from "@shared/hooksQuery/useWidget";
 import Spinner from "@components/Spinner.tsx";
-import type { IFormInputs, IWidget, IWidgetConfig } from "@/types";
+import type { IFormInputs, IWidget } from "@/types";
 import EditWidgetModal from "@components/EditWidgetModal.tsx";
 import { useForm } from "react-hook-form";
 
@@ -24,10 +24,10 @@ const Widgets = () => {
   const createWidgetMutation = useCreateWidgetMutation();
   const deleteWidgetMutation = useDeleteWidgetMutation();
 
-  const handleEditWidget = (config: IWidgetConfig) => {
+  const handleEditWidget = (widget: IWidget) => {
     reset({
-      title: config?.title || "",
-      description: config?.description || "",
+      title: widget?.title || "",
+      description: widget?.description || "",
     });
 
     setIsModalOpen(true);
@@ -40,9 +40,9 @@ const Widgets = () => {
     setIsModalOpen(false);
   };
 
-  const handleDeleteWidget = (config: IWidgetConfig) => {
-    if (config.id) {
-      deleteWidgetMutation.mutate(config.id);
+  const handleDeleteWidget = (widget: IWidget) => {
+    if (widget?.id) {
+      deleteWidgetMutation.mutate(widget.id);
     }
   };
 
