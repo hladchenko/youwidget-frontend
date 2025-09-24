@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import WidgetList from "@/components/WidgetList.tsx";
 import EmptyState from "@/components/EmptyState.tsx";
 import SectionHeading from "@/components/SectionHeading.tsx";
@@ -10,16 +10,24 @@ import {
 } from "@shared/hooksQuery/useWidget";
 import Spinner from "@components/Spinner.tsx";
 import type { IWidget } from "@/types";
+import EditWidgetModal from "@components/EditWidgetModal.tsx";
 
 const Dashboard: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { data: widgets = [], isLoading, error } = useFetchWidgets();
   const createWidgetMutation = useCreateWidgetMutation();
   const deleteWidgetMutation = useDeleteWidgetMutation();
 
-  const handleEditWidget = useCallback((id: string) => {
-    // TODO: Implement edit functionality
+  const handleEditWidget = (id: string) => {
+    setIsModalOpen(true);
     console.warn(`Edit widget ${id} - Not implemented`);
-  }, []);
+  };
+
+  const onSaveHandler = () => {
+    console.log("Saving widget data");
+    setIsModalOpen(false);
+  };
 
   const handleDeleteWidget = useCallback(
     (id: string) => {
@@ -85,6 +93,11 @@ const Dashboard: React.FC = () => {
           onDeleteWidget={handleDeleteWidget}
         />
       )}
+      <EditWidgetModal
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        handleOnSave={onSaveHandler}
+      />
     </>
   );
 };
