@@ -17,18 +17,41 @@ export const useCreateWidgetMutation = (): UseMutationResult<
   IWidget,
   Error,
   IWidget,
-  unknown
+  { previousWidgets: IWidget[] | undefined }
 > => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: ["createWidget"],
     mutationFn: createWidget(),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["widgets"] });
+    onMutate: async (newWidget: IWidget) => {
+      await queryClient.cancelQueries({ queryKey: ["widgets"] });
+
+      const previousWidgets = queryClient.getQueryData<IWidget[]>(["widgets"]);
+
+      const optimisticWidget: IWidget = {
+        ...newWidget,
+        id: `temp-${Date.now()}`,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      queryClient.setQueryData<IWidget[]>(["widgets"], (old = []) => [
+        optimisticWidget,
+        ...old,
+      ]);
+
+      return { previousWidgets };
     },
-    onError: (error: Error) => {
-      console.log(error);
+    onSuccess: (data) => {
+      queryClient.setQueryData<IWidget[]>(["widgets"], (old = []) =>
+        old.map((widget) => (widget?.id?.startsWith("temp-") ? data : widget)),
+      );
+    },
+    onError: (_error: Error, _newWidget, context) => {
+      if (context?.previousWidgets) {
+        queryClient.setQueryData(["widgets"], context.previousWidgets);
+      }
     },
   });
 };
