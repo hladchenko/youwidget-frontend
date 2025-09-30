@@ -1,16 +1,14 @@
+import { Link } from "react-router-dom";
+
 const NotFound = () => {
   return (
     <>
       <div className="grid min-h-full grid-cols-1 grid-rows-[1fr_auto_1fr] bg-white lg:grid-cols-[max(50%,36rem)_1fr]">
         <header className="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-10 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:px-8">
-          <a href="#">
-            <span className="sr-only">Your Company</span>
-            <img
-              alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-10 w-auto sm:h-12"
-            />
-          </a>
+          <Link to="/">
+            <span className="sr-only">YouWidget</span>
+            <img alt="" src={"./logo.png"} className="h-8 w-auto" />
+          </Link>
         </header>
         <main className="mx-auto w-full max-w-7xl px-6 py-24 sm:py-32 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:px-8">
           <div className="max-w-lg">
