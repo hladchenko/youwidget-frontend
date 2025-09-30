@@ -18,6 +18,10 @@ interface LineChartWidgetProps {
   widget: IWidget;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
+  position?: number;
+  rowWidgets?: Array<{ position: number; colSpan: number }>;
+  gridCols?: number;
+  onColSpanChange?: (newColSpan: number) => void;
 }
 
 const LineChartWidget = ({
@@ -25,6 +29,10 @@ const LineChartWidget = ({
   widget,
   onEdit,
   onDelete,
+  position,
+  rowWidgets,
+  gridCols,
+  onColSpanChange,
 }: LineChartWidgetProps) => {
   const data = getChartDataFromJson(widget?.json_data);
   const Chart = (
@@ -62,6 +70,10 @@ const LineChartWidget = ({
       isEditable={false}
       onEdit={onEdit}
       onDelete={onDelete}
+      position={position}
+      rowWidgets={rowWidgets}
+      gridCols={gridCols}
+      onColSpanChange={onColSpanChange}
     />
   );
 };

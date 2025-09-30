@@ -8,6 +8,10 @@ interface WidgetFactoryProps {
   widget: IWidget;
   onEdit: (widget: IWidget) => void;
   onDelete: (widget: IWidget) => void;
+  position?: number;
+  rowWidgets?: Array<{ position: number; colSpan: number }>;
+  gridCols?: number;
+  onColSpanChange?: (newColSpan: number) => void;
 }
 
 const widgetComponents = {
@@ -20,6 +24,10 @@ export const WidgetFactory: React.FC<WidgetFactoryProps> = ({
   widget,
   onEdit,
   onDelete,
+  position,
+  rowWidgets,
+  gridCols,
+  onColSpanChange,
 }) => {
   const widgetType = widget?.type || "text";
   const WidgetComponent = widgetComponents[widgetType];
@@ -37,6 +45,10 @@ export const WidgetFactory: React.FC<WidgetFactoryProps> = ({
       widget={widget}
       onEdit={onEditHandler}
       onDelete={onDeleteHandler}
+      position={position}
+      rowWidgets={rowWidgets}
+      gridCols={gridCols}
+      onColSpanChange={onColSpanChange}
     />
   );
 };

@@ -19,6 +19,10 @@ interface BarChartWidgetProps {
   widget: IWidget;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
+  position?: number;
+  rowWidgets?: Array<{ position: number; colSpan: number }>;
+  gridCols?: number;
+  onColSpanChange?: (newColSpan: number) => void;
 }
 
 const BarChartWidget = ({
@@ -26,6 +30,10 @@ const BarChartWidget = ({
   widget,
   onEdit,
   onDelete,
+  position,
+  rowWidgets,
+  gridCols,
+  onColSpanChange,
 }: BarChartWidgetProps) => {
   const data = getChartDataFromJson(widget?.json_data);
   const Chart = (
@@ -66,6 +74,10 @@ const BarChartWidget = ({
       isEditable={false}
       onEdit={onEdit}
       onDelete={onDelete}
+      position={position}
+      rowWidgets={rowWidgets}
+      gridCols={gridCols}
+      onColSpanChange={onColSpanChange}
     />
   );
 };

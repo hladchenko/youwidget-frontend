@@ -8,9 +8,22 @@ interface TextWidgetProps {
   content?: string;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
+  position?: number;
+  rowWidgets?: Array<{ position: number; colSpan: number }>;
+  gridCols?: number;
+  onColSpanChange?: (newColSpan: number) => void;
 }
 
-const TextWidget = ({ id, widget, onEdit, onDelete }: TextWidgetProps) => {
+const TextWidget = ({
+  id,
+  widget,
+  onEdit,
+  onDelete,
+  position,
+  rowWidgets,
+  gridCols,
+  onColSpanChange,
+}: TextWidgetProps) => {
   const Text = (
     <div className="m-2 text-sm">
       {widget?.description || "No description available"}
@@ -26,6 +39,10 @@ const TextWidget = ({ id, widget, onEdit, onDelete }: TextWidgetProps) => {
       isEditable={true}
       onEdit={onEdit}
       onDelete={onDelete}
+      position={position}
+      rowWidgets={rowWidgets}
+      gridCols={gridCols}
+      onColSpanChange={onColSpanChange}
     />
   );
 };
